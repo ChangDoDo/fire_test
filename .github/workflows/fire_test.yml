@@ -8,8 +8,22 @@ on:
     - cron: '*/10 * * * *'  # 每 10 分鐘自動執行一次
 
 jobs:
-  test-connection:
+  test_crawler:
     runs-on: ubuntu-latest
+
     steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v3
+
+      - name: 設定 Python 環境
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: 安裝必要套件
+        run: pip install requests
+
+      - name: 執行爬蟲測試
+        run: python fire_test.py
 
 
