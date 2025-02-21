@@ -14,11 +14,11 @@ jobs:
       - name: 測試網路連線
         run: |
           echo "使用 Google DNS 解析網站 IP..."
-          nslookup 119.hcfd.gov.tw 8.8.8.8
+          nslookup google.com 8.8.8.8
           echo "使用 Cloudflare DNS 解析網站 IP..."
-          nslookup 119.hcfd.gov.tw 1.1.1.1
+          nslookup google.com  1.1.1.1
           echo "嘗試 ping 目標網站..."
-          ping -c 4 119.hcfd.gov.tw
+          ping -c 4 google.com 
           echo "嘗試 HTTP 連線..."
-          curl -I --connect-timeout 10 https://119.hcfd.gov.tw/DTS/caselist/html
+          curl -I --connect-timeout 10 https://google.com
 
