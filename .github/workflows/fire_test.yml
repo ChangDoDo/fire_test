@@ -25,3 +25,6 @@ jobs:
 
       - name: 執行爬蟲測試
         run: python fire_test.py
+
+      - name: 顯示 IP
+        run: curl ifconfig.me
