@@ -11,14 +11,5 @@ jobs:
   test-connection:
     runs-on: ubuntu-latest
     steps:
-      - name: 測試網路連線
-        run: |
-          echo "使用 Google DNS 解析網站 IP..."
-          nslookup www.youtube.com 8.8.8.8
-          echo "使用 Cloudflare DNS 解析網站 IP..."
-          nslookup www.youtube.com  1.1.1.1
-          echo "嘗試 ping 目標網站..."
-          ping -c 4 www.youtube.com 
-          echo "嘗試 HTTP 連線..."
-          curl -I --connect-timeout 10 https://www.youtube.com/
+
 
