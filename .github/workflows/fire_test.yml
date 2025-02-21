@@ -11,6 +11,14 @@ jobs:
   test-connection:
     runs-on: ubuntu-latest
     steps:
-      - name: 檢查網路連線
+      - name: 測試網路連線
         run: |
-          curl -I https://119.hcfd.gov.tw/DTS/caselist/html
+          echo "使用 Google DNS 解析網站 IP..."
+          nslookup 119.hcfd.gov.tw 8.8.8.8
+          echo "使用 Cloudflare DNS 解析網站 IP..."
+          nslookup 119.hcfd.gov.tw 1.1.1.1
+          echo "嘗試 ping 目標網站..."
+          ping -c 4 119.hcfd.gov.tw
+          echo "嘗試 HTTP 連線..."
+          curl -I --connect-timeout 10 https://119.hcfd.gov.tw/DTS/caselist/html
+
